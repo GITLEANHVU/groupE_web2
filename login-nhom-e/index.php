@@ -1,27 +1,29 @@
+<?php 
+
+if(isset($_GET['logout'])) {
+  setcookie("username", '', time() - (86400 * 7) - 1, "/");
+  setcookie("password", '', time() - (86400 * 7) - 1, "/");
+  setcookie("id", '', time() - (86400 * 7) - 1, "/");
+  header("location: login");
+}
+
+if(!isset($_COOKIE['username']) && !isset($_COOKIE['password']) && !isset($_COOKIE['id']) || empty($_COOKIE['username']) && empty($_COOKIE['password']) && empty($_COOKIE['id'])) {
+  header("location: login");
+}
+
+?>
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <title>Login / Sign Up Form</title>
-    <link rel="shortcut icon" href="/assets/favicon.ico">
-    <link rel="stylesheet" href="./public/main.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lê Anh Vũ</title>
 </head>
 <body>
-    <div class="container">
-        <form class="form" id="login" method="POST">
-            <h1 class="form__title">Login</h1>
-            <div class="form__message form__message--error"></div>
-            <div class="form__input-group">
-                <input name="username" type="text" class="form__input" autofocus placeholder="Username or email">
-                <div class="form__input-error-message"></div>
-            </div>
-            <div class="form__input-group">
-                <input name="password" type="password" class="form__input" autofocus placeholder="Password">
-                <div class="form__input-error-message"></div>
-            </div>
-            <button class="form__button" type="submit">Continue</button>
-        </form>
-    </div>
-    
-    <!-- <script public="./public/main.js"></script> -->
+  <main>
+    <h1>Home page</h1>
+    <a href="?logout">LOGOUT</a>
+  </main>
 </body>
+</html>
